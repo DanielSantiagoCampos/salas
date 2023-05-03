@@ -1,0 +1,12 @@
+%h1 Usuarios
+%table
+  %tr Id
+  %tr Nombre
+  %tr Estado
+  %tr Opciones
+- @users.each do |user|
+  %td= user.id
+  %td= "#{user.first_names} #{user.last_names}"
+  %td= user.status
+  = link_to 'Editar', [:edit, user]
+  = link_to 'Eliminar', user_path(user)
