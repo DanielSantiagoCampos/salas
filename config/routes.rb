@@ -3,6 +3,7 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   root "home#index"
+  resource :login, only: ["show", "create"]
 
   resources :users, param: :id
 end
