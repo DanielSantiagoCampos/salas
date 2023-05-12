@@ -5,9 +5,6 @@ class User < ApplicationRecord
   enum role: %i[administrator aux student teacher]
 
   validates :first_names, presence: true
-  validates :username, :email, presence: true, uniqueness: { case_sensitive: false }
   validates :password, length: { minimum: 8 }, if: -> { password.present? }
-  validates :email, format: EMAIL_REGEX
-
-  #validatable_enums :status, :role
+  validates :email, format: EMAIL_REGEX, presence: true, uniqueness: true
 end

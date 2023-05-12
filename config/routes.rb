@@ -5,5 +5,6 @@ Rails.application.routes.draw do
   root "home#index"
   resource :login, only: ["show", "create"]
 
-  resources :users, param: :id
+  resources :users, only: %i[index show new edit create update destroy], param: :id
+  resources :tools, only: %i[index show new edit create update destroy], param: :id
 end

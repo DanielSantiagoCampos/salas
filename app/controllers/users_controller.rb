@@ -1,10 +1,12 @@
 class UsersController < ApplicationController
+  protect_from_forgery except: :sample
+
   def index
     @users = User.all
   end
 
   def show
-    @users = User.all
+    @user = User.find(params[:id])
   end
 
   def edit
@@ -16,5 +18,42 @@ class UsersController < ApplicationController
   end
 
   def create
+    user_data = user_params
+    @user = User.new(user_data)
+
+    if @user.save
+      redirect_to users_path, success: 'Creado correctament'
+    else
+      render :new, error: "No es posible crear #{@user.errors.full_messages.join(', ')}"
+    end
+  end
+
+  def update
+    user = User.find(params[:id])
+
+    if user.update(user_params)
+      redirect_to users_path, success: 'Actualizado correctament'
+    else
+      render :edit, error: 'No es posible actualizar'
+    end
+  end
+
+  def destroy
+    user = User.find(params[:id])
+    user.destroy!
+  end
+
+  private
+
+  def user_params
+    params.require(:user).permit(
+      :first_names,
+      :last_names,
+      :email,
+      :phone,
+      :password,
+      :role,
+      :status
+    )
   end
 end

@@ -1,0 +1,26 @@
+%h1.title #{xxx == :post ? 'Nuevo' : 'Editar' } Usuario
+
+= simple_form_for(user, method: xxx) do |f|
+
+  = f.label 'Nombres'
+  = f.input_field :first_names, placeholder: 'Nombres', maxlength: 50, required: true
+
+  = f.label 'Apellidos'
+  = f.input_field :last_names, placeholder: 'Apellidos', maxlength: 50, required: true
+
+  = f.label 'Correo electronico'
+  = f.input_field :email, placeholder: 'example@campusucc.edu.co', maxlength: 50, type: :email
+
+  = f.label 'Telefono'
+  = f.input_field :phone, placeholder: 'Telefono', type: :number, maxlength: 10, required: true
+
+  = f.label 'Contraseña'
+  = f.input_field :password, placeholder: 'Contraseña', required: true
+
+  = f.label 'Rol'
+  = f.select :role, [['Administrador', 'administrator'], ['Auxiliar de lab', 'aux'], [ 'Estudiante', 'student'], ['Maestro', 'teacher']], selected: user.role || 'student'
+
+  = f.label 'Estado'
+  = f.select :status, [['Activo', 'active'], ['Inactivo', 'inactive']], selected: user.status || 0
+
+  = f.submit 'Save'

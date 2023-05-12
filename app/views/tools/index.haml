@@ -1,0 +1,17 @@
+.div
+  = link_to '<Volver', root_path
+  = link_to 'Nuevo Dispositivo', new_tool_path
+  %h1.title Lista de dispositivos
+  %table{id: 'table'}
+    %tr
+      %th Nombre
+      %th SKO
+      %th Estado
+      %th Opciones
+      %th
+      - @tools.each do |tool|
+        %tr
+        %td= tool.name
+        %td= tool.sko
+        %td= tool.status
+        %td= link_to 'Editar', [:edit, tool]

@@ -50,7 +50,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_03_030636) do
     t.string "email"
     t.string "phone"
     t.string "password"
-    t.integer "status"
+    t.integer "status", default: 0
     t.boolean "singed"
     t.integer "role"
     t.datetime "created_at", null: false

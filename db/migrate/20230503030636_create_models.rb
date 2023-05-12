@@ -6,7 +6,7 @@ class CreateModels < ActiveRecord::Migration[7.0]
       t.string :email
       t.string :phone
       t.string :password
-      t.integer :status
+      t.integer :status, default: 0
       t.boolean :singed
       t.integer :role
 
