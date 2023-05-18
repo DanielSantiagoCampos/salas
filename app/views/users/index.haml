@@ -1,17 +1,19 @@
 .div
-  = link_to '<Volver', root_path
+  = link_to '<Volver', homes_path
   = link_to 'Nuevo Usuario', new_user_path
   %h1.title Lista de usuarios
   %table{id: 'table'}
     %tr
-      %th Id
       %th Nombre
+      %th Correo
+      %th Telefono
       %th Estado
       %th Opciones
       %th
-      - @users.each do |user|
+      - @users.where('role != 4').each do |user|
         %tr
-        %td= user.id
         %td= "#{user.first_names} #{user.last_names}"
-        %td= user.status
+        %td= user.email
+        %td= user.phone
+        %td= user.status == 'active' ? 'Activo' : 'Inactivo'
         %td= link_to 'Editar', [:edit, user]

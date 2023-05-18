@@ -22,9 +22,9 @@ class UsersController < ApplicationController
     @user = User.new(user_data)
 
     if @user.save
-      redirect_to users_path, success: 'Creado correctament'
+      redirect_to users_path, success: 'Creado correctamente'
     else
-      render :new, error: "No es posible crear #{@user.errors.full_messages.join(', ')}"
+      redirect_to new_user_path, error: "No es posible crear: #{@user.errors.full_messages.join(', ')}"
     end
   end
 
@@ -32,9 +32,9 @@ class UsersController < ApplicationController
     user = User.find(params[:id])
 
     if user.update(user_params)
-      redirect_to users_path, success: 'Actualizado correctament'
+      redirect_to users_path, success: 'Actualizado correctamente'
     else
-      render :edit, error: 'No es posible actualizar'
+      redirect_to new_user_path, error: "No es posible crear: #{user.errors.full_messages.join(', ')}"
     end
   end
 
