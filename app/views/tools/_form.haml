@@ -1,14 +1,14 @@
-%h1.title #{xxx == :post ? 'Nuevo' : 'Editar' } Dispositivo
+%h1.title #{xxx == :post ? 'Nuevo' : 'Editar' } Sala o Dispositivo
 
 = simple_form_for(tool, method: xxx) do |f|
 
   = f.label 'Nombre'
   = f.input_field :name, placeholder: 'Nombre', maxlength: 30, required: true
 
-  = f.label 'SKO'
-  = f.input_field :sko, placeholder: 'SKO', maxlength: 10, required: true, type: :number
+  = f.label 'Tipo'
+  = f.select :tool_type, [['Sala', 'room'], ['Dispositivo', 'tool']], selected: tool.tool_type
 
   = f.label 'Estado'
-  = f.select :status, [['Activo', 'active'], ['Inactivo', 'inactive']], selected: tool.status || 0
+  = f.select :status, [['Activo', 'active'], ['Inactivo', 'inactive']], selected: tool.status
 
   = f.submit 'Save'

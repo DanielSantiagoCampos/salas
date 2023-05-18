@@ -18,16 +18,14 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_03_030636) do
     t.string "tool_name"
     t.integer "status", default: 0
     t.bigint "user_id", null: false
-    t.bigint "tool_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["tool_id"], name: "index_donations_on_tool_id"
     t.index ["user_id"], name: "index_donations_on_user_id"
   end
 
   create_table "reservations", force: :cascade do |t|
     t.datetime "reservation_date"
-    t.integer "status"
+    t.integer "range"
     t.bigint "user_id", null: false
     t.bigint "tool_id", null: false
     t.datetime "created_at", null: false
@@ -39,7 +37,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_03_030636) do
   create_table "tools", force: :cascade do |t|
     t.string "name"
     t.integer "status", default: 0
-    t.integer "sko"
+    t.integer "tool_type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -57,7 +55,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_03_030636) do
     t.datetime "updated_at", null: false
   end
 
-  add_foreign_key "donations", "tools"
   add_foreign_key "donations", "users"
   add_foreign_key "reservations", "tools"
   add_foreign_key "reservations", "users"

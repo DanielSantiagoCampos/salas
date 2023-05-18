@@ -16,14 +16,14 @@ class CreateModels < ActiveRecord::Migration[7.0]
     create_table :tools do |t|
       t.string :name
       t.integer :status, default: 0
-      t.integer :sko
+      t.integer :tool_type
 
       t.timestamps
     end
 
     create_table :reservations do |t|
       t.datetime :reservation_date
-      t.integer :status
+      t.integer :range
       t.references :user, null: false, foreign_key: true
       t.references :tool, null: false, foreign_key: true
 
@@ -34,7 +34,6 @@ class CreateModels < ActiveRecord::Migration[7.0]
       t.string :tool_name
       t.integer :status, default: 0
       t.references :user, null: false, foreign_key: true
-      t.references :tool, null: false, foreign_key: true
 
       t.timestamps
     end

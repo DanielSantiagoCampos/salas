@@ -22,9 +22,9 @@ class ToolsController < ApplicationController
     @tool = Tool.new(tool_data)
 
     if @tool.save
-      redirect_to tools_path, success: 'Creado correctament'
+      redirect_to tools_path, success: 'Creado correctamente'
     else
-      render :new, error: "No es posible crear #{@tool.errors.full_messages.join(', ')}"
+      redirect_to new_tool_path, error: "No es posible crear: #{@tool.errors.full_messages.join(', ')}"
     end
   end
 
@@ -32,9 +32,9 @@ class ToolsController < ApplicationController
     tool = Tool.find(params[:id])
 
     if tool.update(tool_params)
-      redirect_to tools_path, success: 'Actualizado correctament'
+      redirect_to tools_path, success: 'Actualizado correctamente'
     else
-      render :edit, error: 'No es posible actualizar'
+      redirect_to edit_tool_path(params[:id]), error: "No es posible actualizar: #{tool.errors.full_messages.join(', ')}"
     end
   end
 
@@ -46,6 +46,6 @@ class ToolsController < ApplicationController
   private
 
   def tool_params
-    params.require(:tool).permit(:name, :status, :sko)
+    params.require(:tool).permit(:name, :status, :tool_type)
   end
 end

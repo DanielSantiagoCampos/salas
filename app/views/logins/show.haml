@@ -1,7 +1,11 @@
-%h1 Iniciar sesion
-= form_with url: '/login', method: :post do |f|
-  = f.label :email
-  = f.text_field :email, type: :email
-  = f.label :password
-  = f.text_field :password, type: :password
-  = f.submit :submit
+.div
+  %h1 Iniciar sesion
+  = form_with url: '/login', method: :post do |f|
+    = f.label :email
+    = f.text_field :email, type: :email
+    = f.label :password
+    = f.text_field :password, type: :password
+    = f.submit :submit
+
+  %hr
+  = link_to 'Ingresar como invitado', homes_path
