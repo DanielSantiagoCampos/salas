@@ -3,7 +3,7 @@
   = link_to 'Nueva Reserva', new_reservation_path
   %h1.title Calendario de reservas
 
-.simple-calendar
+  .simple-calendar
   = month_calendar(events: @reservations) do |date, reservations|
     = date
 

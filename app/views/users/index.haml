@@ -9,7 +9,6 @@
       %th Telefono
       %th Estado
       %th Opciones
-      %th
       - @users.where('role != 4').each do |user|
         %tr
         %td= user.full_name
