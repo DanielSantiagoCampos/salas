@@ -1,24 +1,17 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Demo
 
-Things you may want to cover:
+![](doc/demo.gif)
 
-* Ruby version
+## Ejecutar localmente
 
-* System dependencies
+Para ejecutar este proyecto debe instalar las siguientes dependencias.
 
-* Configuration
+Ruby version `3.0.2`
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Ejecutar los siguientes comandos:
+`bundle install`
+`rails db:create`
+`rails db:migrate`
+`rails r fill_database.rb`
