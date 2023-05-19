@@ -1,0 +1,17 @@
+.div
+  = link_to '<Volver', homes_path
+  %br
+  = link_to 'Nueva Donacion', new_donation_path
+  %h1.title Lista de Donaciones
+  %table{id: 'table'}
+    %tr
+      %th Nombre
+      %th Estado
+      %th Usuario
+      %th Opciones
+      - @donations.each do |donation|
+        %tr
+        %td= donation.tool_name
+        %td= donation.status == 'requested' ? 'Registrado' : 'Entregado'
+        %td= donation.user.full_name
+        %td= link_to 'Editar', [:edit, donation]

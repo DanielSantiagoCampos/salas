@@ -9,4 +9,8 @@ class User < ApplicationRecord
   validates :email, format: EMAIL_REGEX, presence: true, uniqueness: true
 
   has_many :reservations
+
+  def full_name
+    "#{first_names} #{last_names}"
+  end
 end

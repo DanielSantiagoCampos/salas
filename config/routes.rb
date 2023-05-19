@@ -8,4 +8,5 @@ Rails.application.routes.draw do
   resources :homes, only: ["index"]
   resources :users, only: %i[index show new edit create update destroy], param: :id
   resources :tools, only: %i[index show new edit create update destroy], param: :id
+  resources :donations, only: %i[index show new edit create update destroy], param: :id
 end

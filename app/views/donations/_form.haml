@@ -1,0 +1,14 @@
+%h1.title #{xxx == :post ? 'Nuevo' : 'Editar' } Donacion
+
+= simple_form_for(donation, method: xxx) do |f|
+
+  = f.label 'Nombre'
+  = f.input_field :tool_name, placeholder: 'Nombre', maxlength: 30, required: true
+
+  = f.label 'Usuario'
+  = f.select :user_id, User.where('role in (2, 3)').map{|u| [u.full_name, u.id]}, selected: donation.user_id
+
+  = f.label 'Estado'
+  = f.select :status, [['Registrado', 'requested'], ['Entregado', 'received']], selected: donation.status
+
+  = f.submit 'Save'
