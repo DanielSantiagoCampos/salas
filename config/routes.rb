@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   root "logins#show"
   resource :login, only: ["show", "create"]
+  resource :calendar, only: ["show"]
 
   resources :homes, only: ["index"]
   resources :users, only: %i[index show new edit create update destroy], param: :id

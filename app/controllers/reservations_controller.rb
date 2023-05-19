@@ -20,8 +20,8 @@ class ReservationsController < ApplicationController
   def create
     reservation_data = reservation_params
     @reservation = Reservation.new(reservation_data)
-    reserved_until = reservation_params[:reserved_at].to_datetime + reservation_params[:range].to_i.send(:hours)
-    @reservation.reserved_until = reserved_until
+    end_date = reservation_params[:start_date].to_datetime + reservation_params[:range].to_i.send(:hours)
+    @reservation.end_date = end_date
 
     if @reservation.save
       redirect_to reservations_path, success: 'Creado correctamente'
@@ -48,6 +48,6 @@ class ReservationsController < ApplicationController
   private
 
   def reservation_params
-    params.require(:reservation).permit(:reserved_at, :range, :user_id, :tool_id)
+    params.require(:reservation).permit(:start_date, :range, :user_id, :tool_id)
   end
 end

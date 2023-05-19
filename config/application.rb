@@ -10,6 +10,9 @@ module Salas
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 7.0
+    config.i18n.available_locales = [:en, :de, :fr]
+    config.i18n.default_locale = :en
+    config.beginning_of_week = :sunday
 
     # Configuration for the application, engines, and railties goes here.
     #

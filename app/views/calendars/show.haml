@@ -1,0 +1,14 @@
+.div
+  = link_to '<Volver', homes_path
+  = link_to 'Nueva Reserva', new_reservation_path
+  %h1.title Calendario de reservas
+
+.simple-calendar
+  = month_calendar(events: @reservations) do |date, reservations|
+    = date
+
+    - reservations.each do |reservation|
+      .div
+        %p= "#{reservation.user.first_names}"
+        %p= "#{reservation.start_date.strftime('%H:%M')} - #{reservation.end_date.strftime('%H:%M')}"
+        %p= "#{reservation.tool.tool_type == 'tool' ? 'Dispositivo' : 'Sala'} - #{reservation.tool.name}"

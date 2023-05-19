@@ -31,3 +31,41 @@
 
 en:
   hello: "Hello world"
+  simple_calendar:
+    previous: "Anterior"
+    next: "Siguiente"
+    week: Wocheesuth
+  activerecord:
+  errors:
+  date:
+    abbr_day_names:
+      - Dom
+      - Lun
+      - Mar
+      - Mié
+      - Jue
+      - Vie
+      - Sáb
+    abbr_month_names:
+      -
+      - Ene
+      - Feb
+      - Mar
+      - Abr
+      - May
+      - Jun
+      - Jul
+      - Ago
+      - Sep
+      - Oct
+      - Nov
+      - Dic
+    day_names:
+      - domingo
+      - lunes
+      - martes
+      - miércoles
+      - jueves
+      - viernes
+      - sábado
+
