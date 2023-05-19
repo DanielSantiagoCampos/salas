@@ -20,10 +20,74 @@
       </div>
     <% end %>
 
-    <%= yield %>
+    <% if current_user.present? %>
+      <div class="col-sm-3 col-md-3">
+        <div class="panel-group" id="accordion">
+          <div class="panel panel-default">
+
+            <div class="panel-heading">
+              <h4 class="panel-title">
+                <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo"><span class="glyphicon glyphicon-user">
+                </span> <%= current_user.full_name %> </a>
+              </h4>
+            </div>
+
+            <div id="collapseTwo" class="panel-collapse collapse">
+              <div class="panel-body">
+                <table class="table">
+                  <tr>
+                    <td>
+                        <span class="glyphicon glyphicon-trash text-danger"></span><a href="login?destroy_session=true" class="text-danger"> Cerrar sesion </a>
+                    </td>
+                  </tr>
+                </table>
+              </div>
+            </div>
+
+            <div class="panel panel-default">
+              <%- modules_by_user.each_with_index do |modul, index| %>
+
+                <div class="panel-heading">
+                  <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse<%= index %>"><span class="glyphicon glyphicon-th">
+                    </span><%= modul.keys.first %> </a>
+                  </h4>
+                </div>
+
+                <div id="collapse<%=index%>" class="panel-collapse collapse">
+                  <div class="panel-body">
+                    <table class="table">
+                      <%- modul.values.flatten.each do |value| %>
+                        <tr>
+                          <td>
+                            <span class="glyphicon glyphicon-<%= value[:icon] %>"></span><a href="<%= value[:path] %>"> <%= value[:text] %></a>
+                          </td>
+                        </tr>
+                      <% end %>
+                    </table>
+                  </div>
+                </div>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+
+        <div class="col-sm-9 col-md-9">
+          <%= yield %>
+        </div>
+      </div>
+    </div>
+
   </body>
+
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+  <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+  <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+  <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 </html>

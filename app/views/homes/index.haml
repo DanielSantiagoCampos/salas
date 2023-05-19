@@ -1,9 +1,7 @@
-.container.home
-  %h1 Dispositivos
-  = link_to 'Dispositivos', tools_path
-  = link_to 'Reservaciones', reservations_path
-  = link_to 'Donaciones', donations_path
-  = link_to 'Agenda', calendar_path
-
-  %h1 Usuarios
-  = link_to 'Usuarios', users_path
+.row
+  .col-sm-9.col-md-9
+    .well
+      %h1 Bienvenido #{ current_user.full_name}
+      %h3 Sala de audiovisuales de la Universidad Cooperativa de Colombia
+      %h5 Bloque 1
+      %h6 Aca podra consultar, reservar y donar cualquier equipo que necesite.

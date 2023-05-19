@@ -1,11 +1,22 @@
-.div
-  %h1 Iniciar sesion
-  = form_with url: '/login', method: :post do |f|
-    = f.label :email
-    = f.text_field :email, type: :email
-    = f.label :password
-    = f.text_field :password, type: :password
-    = f.submit :submit
+%main.login-form
+  .cotainer
+    .row.justify-content-center
+      .col-md-8
+        .card
+          .card-header Iniciar sesion
+          .card-body
 
-  %hr
-  = link_to 'Ingresar como invitado', homes_path
+            = form_with url: '/login', method: :post do |f|
+              .form-group.row
+                = f.label 'Correo', :class => "col-md-4 col-form-label text-md-right", for: 'email_address'
+                .col-md-6
+                  = f.text_field :email, type: :email, :class => "form-control email-address", id: "email_address"
+
+                = f.label 'Contraseña', :class => "col-md-4 col-form-label text-md-right", :for => "password"
+                .col-md-6
+                  = f.text_field :password, type: :password, :class => "form-control", :id => "password"
+
+                .col-md-6.offset-md-4
+                = f.submit 'Iniciar sesion', :class => "btn btn-primary"
+
+                = link_to 'Ingresar como invitado', homes_path(sign_by_visitor: true), class: 'btn btn-link'

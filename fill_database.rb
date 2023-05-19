@@ -2,7 +2,7 @@ User.create(first_names: "Daniel Admin", last_names: "Campos", email: "daniel.ca
 User.create(first_names: "Daniel Aux", last_names: "Campos", email: "daniel.aux@campusucc.edu.co", phone: "3058193746", password: "12345678", status: "active", singed: nil, role: 1)
 User.create(first_names: "Daniel Estudiante", last_names: "Campos", email: "daniel.student@campusucc.edu.co", phone: "3058193746", password: "12345678", status: "active", singed: nil, role: 2)
 User.create(first_names: "Daniel Profesor", last_names: "Campos", email: "daniel.teacher@campusucc.edu.co", phone: "3058193746", password: "12345678", status: "active", singed: nil, role: 3)
-User.create(first_names: "Visitante", last_names: "", email: "", phone: "", password: "visitante@campusucc.edu.co", status: "active", singed: nil, role: 4)
+User.create(first_names: "Visitante", last_names: "", email: "visitante@campusucc.edu.co", phone: "", password: "12345678", status: "active", singed: nil, role: 4)
 
 Tool.create(name: "Router 0001", tool_type: 0)
 Tool.create(name: "Router 0002", tool_type: 0)
