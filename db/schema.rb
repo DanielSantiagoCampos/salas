@@ -24,7 +24,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_03_030636) do
   end
 
   create_table "reservations", force: :cascade do |t|
-    t.datetime "reservation_date"
+    t.datetime "reserved_at"
+    t.datetime "reserved_until"
     t.integer "range"
     t.bigint "user_id", null: false
     t.bigint "tool_id", null: false

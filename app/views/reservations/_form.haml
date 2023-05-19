@@ -1,0 +1,17 @@
+%h1.title #{xxx == :post ? 'Nueva' : 'Editar' } Reserva
+
+= simple_form_for(reservation, method: xxx) do |f|
+
+  = f.label 'Fecha de reserva'
+  = f.input_field :reserved_at, as: :datetime, html5: true
+
+  = f.label 'Tiempo en horas'
+  = f.input_field :range
+
+  = f.label 'Usuario'
+  = f.select :user_id, User.where('role in (2, 3, 4)').map{|u| [u.full_name, u.id]}, selected: reservation.user_id
+
+  = f.label 'Sala o dispositivo'
+  = f.select :tool_id, Tool.all.map{|u| [u.name, u.id]}, selected: reservation.tool_id
+
+  = f.submit 'Save'

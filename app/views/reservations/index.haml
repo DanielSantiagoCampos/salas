@@ -1,0 +1,19 @@
+.div
+  = link_to '<Volver', homes_path
+  %br
+  = link_to 'Nueva Reserva', new_reservation_path
+  %h1.title Lista de Reservas
+  %table{id: 'table'}
+    %tr
+      %th Fecha de reserva
+      %th Usuario
+      %th Tipo de reserva
+      %th Nombre
+      %th
+      - @reservations.each do |reservation|
+        %tr
+        %td= "#{reservation.reserved_at.strftime("%d/%m/%y %H:%M")} - #{reservation.reserved_until.strftime("%d/%m/%y %H:%M")}"
+        %td= reservation.user.full_name
+        %td= reservation.tool.tool_type == 'tool' ? 'Dispositivo' : 'Sala'
+        %td= reservation.tool.name
+        %td= link_to 'Editar', [:edit, reservation]

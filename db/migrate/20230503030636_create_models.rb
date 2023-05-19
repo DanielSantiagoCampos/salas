@@ -22,7 +22,8 @@ class CreateModels < ActiveRecord::Migration[7.0]
     end
 
     create_table :reservations do |t|
-      t.datetime :reservation_date
+      t.datetime :reserved_at
+      t.datetime :reserved_until
       t.integer :range
       t.references :user, null: false, foreign_key: true
       t.references :tool, null: false, foreign_key: true
